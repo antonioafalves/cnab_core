@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
-import org.junit.Test;
 
 /**
  *
@@ -18,14 +17,14 @@ import org.junit.Test;
  */
 public class Teste {
 
-    @Test
+//    @Test
     public void retorno() throws Exception {
         Path path = Paths.get("C:/Users/antonio/Documents/NetBeansProjects/CNAB_core", "teste.txt");
         Remessa r = new Remessa();
         r.ler(path);
     }
     
-    @Test
+//    @Test
     public void remessa() throws Exception {
         int sequencia = 0;
         Remessa remessa = new Remessa();

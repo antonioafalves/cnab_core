@@ -88,6 +88,6 @@ public class RemessaTest {
         footer.setSequencia(++sq);
         remessa.setFooter(footer);
 
-        remessa.gravar(new PrintWriter("c:\\teste.txt"));
+        remessa.gravar(new PrintWriter("teste.txt"));
     }
 }
