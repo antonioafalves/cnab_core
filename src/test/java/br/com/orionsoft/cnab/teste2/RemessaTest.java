@@ -5,36 +5,12 @@
 
 package br.com.orionsoft.cnab.teste2;
 
+import org.junit.jupiter.api.Test;
 import java.io.PrintWriter;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
-/**
- *
- * @author Antonio
- */
 public class RemessaTest {
 
     public RemessaTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
     }
 
     @Test
