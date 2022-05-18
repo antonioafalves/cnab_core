@@ -1,18 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.teste;
 
 import br.com.orionsoft.cnab.core.Arquivo;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Antonio
- */
 public class Remessa extends Arquivo {
     private Header header;
     private List<Detalhe> detalhes;
@@ -20,7 +12,7 @@ public class Remessa extends Arquivo {
 
     public List<Detalhe> getDetalhes() {
         if (detalhes == null)
-            detalhes = new ArrayList<Detalhe>();
+            detalhes = new ArrayList<>();
         return detalhes;
     }
 

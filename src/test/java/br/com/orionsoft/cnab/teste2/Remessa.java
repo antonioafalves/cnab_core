@@ -1,25 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.teste2;
-
-import br.com.orionsoft.cnab.core.Arquivo;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- * @author Antonio
- */
-
 
 // Criar um hashMap com Identificadores possiveis e suas respectivas classes
 // Percorre a classe arquivo identificando os seus registros, para cada
 // tipo de registro encontrado busca o IDENTIFICADOR do @Registro
 // Dentro de um registro, busque @Subregistros para pegar a classe
 // e seu IDENTIFICADOR do @Registro para também colocá-lo no Map
+
+import br.com.orionsoft.cnab.core.Arquivo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Remessa extends Arquivo {
     private Header header;
@@ -44,7 +34,7 @@ public class Remessa extends Arquivo {
 
     public List<Titular> getTitular() {
         if (titular == null)
-            titular = new ArrayList<Titular>();
+            titular = new ArrayList<>();
         return titular;
     }
 

@@ -1,18 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.core;
 
 import br.com.orionsoft.cnab.core.annotation.Campo;
 import br.com.orionsoft.cnab.core.annotation.Registro;
 import br.com.orionsoft.cnab.core.annotation.SubRegistro;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.Reader;
+
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -22,10 +14,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Antonio
- */
 public abstract class Arquivo {
 
     public boolean gravar(PrintWriter writer) throws Exception {

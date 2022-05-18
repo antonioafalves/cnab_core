@@ -1,24 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.teste;
 
 import br.com.orionsoft.cnab.core.FormatoCampo;
 import br.com.orionsoft.cnab.core.annotation.Campo;
 import br.com.orionsoft.cnab.core.annotation.Identificador;
 import br.com.orionsoft.cnab.core.annotation.Registro;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
 
-/**
- *
- * @author Antonio
- */
 @Registro
 public class Detalhe {
-    @Campo(inicio=1, tamanho=3, formato=FormatoCampo.NUMERICO)
+    @Campo(inicio=1, tamanho=3, formato= FormatoCampo.NUMERICO)
     private int sequencia;
     @Identificador
     @Campo(inicio=4, tamanho=1, formato=FormatoCampo.ALFANUMERICO)
@@ -65,5 +57,5 @@ public class Detalhe {
     public void setSequencia(int sequencia) {
         this.sequencia = sequencia;
     }
-    
+
 }

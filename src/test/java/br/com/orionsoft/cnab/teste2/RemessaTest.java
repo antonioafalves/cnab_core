@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.teste2;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 import java.io.PrintWriter;
 
 public class RemessaTest {

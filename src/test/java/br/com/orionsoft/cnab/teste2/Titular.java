@@ -1,25 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.teste2;
 
 import br.com.orionsoft.cnab.core.FormatoCampo;
 import br.com.orionsoft.cnab.core.annotation.Campo;
 import br.com.orionsoft.cnab.core.annotation.Registro;
 import br.com.orionsoft.cnab.core.annotation.SubRegistro;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Antonio
- */
 //@Arquivo(sequenceSize="3", sequenceIndex="0" )
 @Registro(delimitador="|")
 public class Titular {
-    @Campo(tamanho=3, formato=FormatoCampo.NUMERICO)
+    @Campo(tamanho=3, formato= FormatoCampo.NUMERICO)
     private int sequencia;
     @Campo(tamanho=10, formato=FormatoCampo.ALFANUMERICO, fixo=false)
     private String id = "TITULAR";
@@ -32,7 +24,7 @@ public class Titular {
 
     public List<Dependente> getDependentes() {
         if (dependentes == null)
-            dependentes = new ArrayList<Dependente>();
+            dependentes = new ArrayList<>();
         return dependentes;
     }
 
@@ -71,5 +63,5 @@ public class Titular {
     public void setSequencia(int sequencia) {
         this.sequencia = sequencia;
     }
-    
+
 }

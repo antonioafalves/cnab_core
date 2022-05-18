@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.teste;
+
+import org.junit.Test;
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -11,20 +8,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
 
-/**
- *
- * @author Antonio
- */
 public class Teste {
 
-//    @Test
+    @Test
     public void retorno() throws Exception {
-        Path path = Paths.get("C:/Users/antonio/Documents/NetBeansProjects/CNAB_core", "teste.txt");
+        Path path = Paths.get("/home/antonio/dev/orion/cnab_core", "teste.txt");
         Remessa r = new Remessa();
         r.ler(path);
     }
-    
-//    @Test
+
+    @Test
     public void remessa() throws Exception {
         int sequencia = 0;
         Remessa remessa = new Remessa();
@@ -36,6 +29,7 @@ public class Teste {
         sequencia++;
         header.setSequencia(sequencia);
         header.setEmpresa("Empresa");
+        header.setTeste(Header.Teste.TESTE1);
         remessa.setHeader(header);
 
         sequencia++;
