@@ -6,7 +6,7 @@ import br.com.orionsoft.cnab.core.annotation.Identificador;
 import br.com.orionsoft.cnab.core.annotation.Registro;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 @Registro
 public class Detalhe {
@@ -20,13 +20,13 @@ public class Detalhe {
     @Campo(inicio=18, tamanho=5, formato=FormatoCampo.DECIMAL)
     private BigDecimal valor;
     @Campo(inicio=23, tamanho=8, formato=FormatoCampo.DATA_AAAAMMDD)
-    private Calendar data;
+    private LocalDate data;
 
-    public Calendar getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Calendar data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 

@@ -6,9 +6,9 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Calendar;
+import java.time.LocalDate;
 
-public class Teste {
+public class RemessaTest {
 
     @Test
     public void retorno() throws Exception {
@@ -35,15 +35,15 @@ public class Teste {
         sequencia++;
         d1.setSequencia(sequencia);
         d1.setNome("Fulano");
-        d1.setValor(new BigDecimal(1.23));
-        d1.setData(Calendar.getInstance());
+        d1.setValor(BigDecimal.valueOf(1.23));
+        d1.setData(LocalDate.now());
         remessa.getDetalhes().add(d1);
 
         sequencia++;
         d2.setSequencia(sequencia);
         d2.setNome("Sicrano da Silva SaurO");
-        d2.setValor(new BigDecimal(1.23));
-        d2.setData(Calendar.getInstance());
+        d2.setValor(BigDecimal.valueOf(1.23));
+        d2.setData(LocalDate.now());
         remessa.getDetalhes().add(d2);
 
         sequencia++;

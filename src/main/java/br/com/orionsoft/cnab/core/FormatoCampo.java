@@ -1,18 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.orionsoft.cnab.core;
 
 import br.com.orionsoft.cnab.core.annotation.Campo;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Antonio
- */
 public enum FormatoCampo {
 		ALFANUMERICO {
                 @Override
@@ -35,15 +27,10 @@ public enum FormatoCampo {
                     public String formatar(Object value, Campo campo) {
                         String result = "";
                         try {
-                            if (value instanceof Number == false) {
+                            if (!(value instanceof Number)) {
                                 value = Long.parseLong((String)value);
                             }
                             result = String.format("%" + (campo.fixo() ? "0" : "") + campo.tamanho() + "d", value);
-//                            if (value instanceof Number) {
-//                                result = String.format("%0" + campo.tamanho() + "d", value);
-//                            } else {
-//                                result = String.format("%0" + campo.tamanho() + "d", Long.parseLong((String) value));
-//                            }
                         } catch (Exception ex) {
                             Logger.getLogger(this.getClass().getName()).log(Level.ALL, null, ex);
                         }

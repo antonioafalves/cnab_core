@@ -28,10 +28,6 @@ public class Header {
             this.value = value;
         }
 
-//        @Override
-//        public String toString() {
-//            return value.toString();
-//        }
     }
 
     public String getEmpresa() {
