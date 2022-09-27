@@ -1,25 +1,25 @@
 package br.com.orionsoft.cnab.teste2;
 
-import br.com.orionsoft.cnab.core.FormatoCampo;
-import br.com.orionsoft.cnab.core.annotation.Campo;
-import br.com.orionsoft.cnab.core.annotation.Registro;
-import br.com.orionsoft.cnab.core.annotation.SubRegistro;
+import br.com.orionsoft.cnab.core.Pattern;
+import br.com.orionsoft.cnab.core.annotation.Field;
+import br.com.orionsoft.cnab.core.annotation.Record;
+import br.com.orionsoft.cnab.core.annotation.SubRecord;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //@Arquivo(sequenceSize="3", sequenceIndex="0" )
-@Registro(delimitador="|")
+@Record(delimiter ="|")
 public class Titular {
-    @Campo(tamanho=3, formato= FormatoCampo.NUMERICO)
+    @Field(size =3, format = Pattern.NUMERIC)
     private int sequencia;
-    @Campo(tamanho=10, formato=FormatoCampo.ALFANUMERICO, fixo=false)
+    @Field(size =10, format = Pattern.ALPHANUMERIC, fixed =false)
     private String id = "TITULAR";
-    @Campo(tamanho=11, formato=FormatoCampo.NUMERICO)
+    @Field(size =11, format = Pattern.NUMERIC)
     private String cpf;
-    @Campo(tamanho=8, formato=FormatoCampo.NUMERICO)
+    @Field(size =8, format = Pattern.NUMERIC)
     private long telefone;
-    @SubRegistro
+    @SubRecord
     private List<Dependente> dependentes;
 
     public List<Dependente> getDependentes() {

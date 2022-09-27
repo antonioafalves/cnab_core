@@ -1,20 +1,20 @@
 package br.com.orionsoft.cnab.teste;
 
-import br.com.orionsoft.cnab.core.FormatoCampo;
-import br.com.orionsoft.cnab.core.annotation.Campo;
-import br.com.orionsoft.cnab.core.annotation.Identificador;
-import br.com.orionsoft.cnab.core.annotation.Registro;
+import br.com.orionsoft.cnab.core.Pattern;
+import br.com.orionsoft.cnab.core.annotation.Field;
+import br.com.orionsoft.cnab.core.annotation.identifier;
+import br.com.orionsoft.cnab.core.annotation.Record;
 
-@Registro
+@Record
 public class Header {
-    @Campo(formato = FormatoCampo.NUMERICO, tamanho = 2)
+    @Field(format = Pattern.NUMERIC, size = 2)
     private Teste teste;
-    @Campo(inicio=1, tamanho=3, formato=FormatoCampo.NUMERICO)
+    @Field(start =1, size =3, format = Pattern.NUMERIC)
     private int sequencia;
-    @Identificador
-    @Campo(inicio=4, tamanho=1, formato=FormatoCampo.ALFANUMERICO)
+    @identifier
+    @Field(start =4, size =1, format = Pattern.ALPHANUMERIC)
     private final String id = "H";
-    @Campo(inicio=5, tamanho=26, formato=FormatoCampo.ALFANUMERICO)
+    @Field(start =5, size =26, format = Pattern.ALPHANUMERIC)
     private String empresa;
 
 

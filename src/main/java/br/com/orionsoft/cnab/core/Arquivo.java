@@ -1,11 +1,10 @@
 package br.com.orionsoft.cnab.core;
 
-import br.com.orionsoft.cnab.core.annotation.Campo;
-import br.com.orionsoft.cnab.core.annotation.Registro;
-import br.com.orionsoft.cnab.core.annotation.SubRegistro;
+import br.com.orionsoft.cnab.core.annotation.Field;
+import br.com.orionsoft.cnab.core.annotation.Record;
+import br.com.orionsoft.cnab.core.annotation.SubRecord;
 
 import java.io.*;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.Charset;
@@ -16,84 +15,84 @@ import java.util.List;
 
 public abstract class Arquivo {
 
-    public boolean gravar(PrintWriter writer) throws Exception {
+    public boolean save(PrintWriter writer) throws Exception {
         /* Busca a classe que implementou Arquivo */
         Class classe = this.getClass();
         /* Itera nos registros (fields) */
-        for (Field field : classe.getDeclaredFields()) {
+        for (java.lang.reflect.Field field : classe.getDeclaredFields()) {
             Method method = classe.getMethod("get".concat(field.getName().substring(0, 1).toUpperCase()).concat(field.getName().substring(1)));
             /* Se não for uma lista, cria uma e adiciona o campo na lista */
             List list;
             if (field.getType() == List.class) {
                 list = (List) method.invoke(this);
             } else {
-                list = new ArrayList<Registro>();
+                list = new ArrayList<Record>();
                 list.add(method.invoke(this));
             }
-            processarRegistros(list, writer);
+            processRecord(list, writer);
         }
         writer.flush();
         writer.close();
         return true;
     }
     
-    public boolean ler(Path path) throws Exception {
+    public boolean read(Path path) throws Exception {
         Reader r = Files.newBufferedReader(path, Charset.forName("ISO-8859-1"));
         BufferedReader br = new BufferedReader(r);
     	String linha;
         while ((linha = br.readLine()) != null){
-            processarLinha(linha);
+            processLine(linha);
         }
         return true;
     }
 
-    public boolean ler(InputStream is) throws Exception {
+    public boolean read(InputStream is) throws Exception {
     	BufferedReader br =  new BufferedReader(new InputStreamReader(is));
     	String linha;
         while ((linha = br.readLine()) != null){
-            processarLinha(linha);
+            processLine(linha);
         }
         return true;
     }
 
-    private void processarLinha(String linha) throws Exception {
+    private void processLine(String line) throws Exception {
         Class classe = this.getClass();
-        for (Field field : classe.getDeclaredFields()) {
+        for (java.lang.reflect.Field field : classe.getDeclaredFields()) {
             Method method = classe.getMethod("get".concat(field.getName().substring(0, 1).toUpperCase()).concat(field.getName().substring(1)));
             /* Se não for uma lista, cria uma e adiciona o campo na lista */
             List list;
             if (field.getType() == List.class) {
                 list = (List) method.invoke(this);
             } else {
-                list = new ArrayList<Registro>();
+                list = new ArrayList<Record>();
                 list.add(method.invoke(this));
             }
-            // TODO Identificar o tipo de registro contido na linha
+            // TODO Identificar o tipo de registro contido na line
         }
     }
 
-    private void processarRegistros(List list, PrintWriter writer) throws SecurityException, InvocationTargetException, IllegalArgumentException, IllegalAccessException, NoSuchMethodException {
+    private void processRecord(List list, PrintWriter writer) throws SecurityException, InvocationTargetException, IllegalArgumentException, IllegalAccessException, NoSuchMethodException {
         /* Registros */
         for (Object registro : list) {
             if (registro != null) {
                 StringBuilder linha = new StringBuilder();
                 Class c = registro.getClass();
-                Registro anotacaoRegistro = (Registro) c.getAnnotation(Registro.class);
-                if (anotacaoRegistro != null) {
+                Record anotacaoRecord = (Record) c.getAnnotation(Record.class);
+                if (anotacaoRecord != null) {
                     /* Campos */
-                    for (Field f : c.getDeclaredFields()) {
-                        Campo anotacaoCampo = f.getAnnotation(Campo.class);
-                        if (anotacaoCampo != null) {
+                    for (java.lang.reflect.Field f : c.getDeclaredFields()) {
+                        Field anotacaoField = f.getAnnotation(Field.class);
+                        if (anotacaoField != null) {
                             /* Invoca o método get de cada campo */
                             Method m = c.getMethod("get".concat(f.getName().substring(0, 1).toUpperCase()).concat(f.getName().substring(1)));
                             Object valorCampo = m.invoke(registro);
-                            linha.append(formatarCampo(anotacaoCampo, valorCampo).concat(anotacaoRegistro.delimitador()));
+                            linha.append(formatField(anotacaoField, valorCampo).concat(anotacaoRecord.delimiter()));
                         }
                     }
                     writer.println(linha);
                     /* SubRegistros */
-                    for (Field f : c.getDeclaredFields()) {
-                        SubRegistro anotacaoCampo = f.getAnnotation(SubRegistro.class);
+                    for (java.lang.reflect.Field f : c.getDeclaredFields()) {
+                        SubRecord anotacaoCampo = f.getAnnotation(SubRecord.class);
                         if (anotacaoCampo != null) {
                             /* Invoca o método get de cada campo */
                             Method m = c.getMethod("get".concat(f.getName().substring(0, 1).toUpperCase()).concat(f.getName().substring(1)));
@@ -104,7 +103,7 @@ public abstract class Arquivo {
                                 l = new ArrayList();
                                 l.add(m.invoke(registro));
                             }
-                            processarRegistros(l, writer);
+                            processRecord(l, writer);
                         }
                     }
                 }
@@ -112,14 +111,14 @@ public abstract class Arquivo {
         }
     }
 
-    private String formatarCampo(Campo campo, Object value) {
-        String result = campo.formato().formatar(value, campo);
-        if (!campo.fixo()) {
+    private String formatField(Field field, Object value) {
+        String result = field.format().format(value, field);
+        if (!field.fixed()) {
             result = result.trim();
         } 
-        if (campo.tamanho() > 0) {
-            if (result.length() > campo.tamanho()) {
-                result = result.substring(0, campo.tamanho());
+        if (field.size() > 0) {
+            if (result.length() > field.size()) {
+                result = result.substring(0, field.size());
             }
         }
         return result;

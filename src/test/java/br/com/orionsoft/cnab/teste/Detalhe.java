@@ -1,25 +1,25 @@
 package br.com.orionsoft.cnab.teste;
 
-import br.com.orionsoft.cnab.core.FormatoCampo;
-import br.com.orionsoft.cnab.core.annotation.Campo;
-import br.com.orionsoft.cnab.core.annotation.Identificador;
-import br.com.orionsoft.cnab.core.annotation.Registro;
+import br.com.orionsoft.cnab.core.Pattern;
+import br.com.orionsoft.cnab.core.annotation.Field;
+import br.com.orionsoft.cnab.core.annotation.identifier;
+import br.com.orionsoft.cnab.core.annotation.Record;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Registro
+@Record
 public class Detalhe {
-    @Campo(inicio=1, tamanho=3, formato= FormatoCampo.NUMERICO)
+    @Field(start =1, size =3, format = Pattern.NUMERIC)
     private int sequencia;
-    @Identificador
-    @Campo(inicio=4, tamanho=1, formato=FormatoCampo.ALFANUMERICO)
+    @identifier
+    @Field(start =4, size =1, format = Pattern.ALPHANUMERIC)
     private String id = "D";
-    @Campo(inicio=5, tamanho=13, formato=FormatoCampo.ALFANUMERICO)
+    @Field(start =5, size =13, format = Pattern.ALPHANUMERIC)
     private String nome;
-    @Campo(inicio=18, tamanho=5, formato=FormatoCampo.DECIMAL)
+    @Field(start =18, size =5, format = Pattern.DECIMAL)
     private BigDecimal valor;
-    @Campo(inicio=23, tamanho=8, formato=FormatoCampo.DATA_AAAAMMDD)
+    @Field(start =23, size =8, format = Pattern.DATE_AAAAMMDD)
     private LocalDate data;
 
     public LocalDate getData() {

@@ -14,7 +14,7 @@ public class RemessaTest {
     public void retorno() throws Exception {
         Path path = Paths.get("/home/antonio/dev/orion/cnab_core", "teste.txt");
         Remessa r = new Remessa();
-        r.ler(path);
+        r.read(path);
     }
 
     @Test
@@ -51,6 +51,6 @@ public class RemessaTest {
         footer.setQuantidade(sequencia);
         remessa.setFooter(footer);
 
-        remessa.gravar(new PrintWriter("teste.txt"));
+        remessa.save(new PrintWriter("teste.txt"));
     }
 }

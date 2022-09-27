@@ -7,8 +7,8 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Registro {
+public @interface Record {
     String id() default "";
     int idIndex() default 0;
-    String delimitador() default "";
+    String delimiter() default "";
 }
