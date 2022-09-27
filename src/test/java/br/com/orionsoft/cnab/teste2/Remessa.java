@@ -6,12 +6,12 @@ package br.com.orionsoft.cnab.teste2;
 // Dentro de um registro, busque @Subregistros para pegar a classe
 // e seu IDENTIFICADOR do @Registro para também colocá-lo no Map
 
-import br.com.orionsoft.cnab.core.Arquivo;
+import br.com.orionsoft.cnab.core.File;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Remessa extends Arquivo {
+public class Remessa extends File {
     private Header header;
     private List<Titular> titular;
     private Footer footer;

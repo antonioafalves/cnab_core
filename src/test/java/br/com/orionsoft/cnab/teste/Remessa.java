@@ -1,11 +1,11 @@
 package br.com.orionsoft.cnab.teste;
 
-import br.com.orionsoft.cnab.core.Arquivo;
+import br.com.orionsoft.cnab.core.File;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Remessa extends Arquivo {
+public class Remessa extends File {
     private Header header;
     private List<Detalhe> detalhes;
     private Footer footer;

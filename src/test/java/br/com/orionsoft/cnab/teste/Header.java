@@ -2,19 +2,19 @@ package br.com.orionsoft.cnab.teste;
 
 import br.com.orionsoft.cnab.core.Pattern;
 import br.com.orionsoft.cnab.core.annotation.Field;
-import br.com.orionsoft.cnab.core.annotation.identifier;
+import br.com.orionsoft.cnab.core.annotation.Identifier;
 import br.com.orionsoft.cnab.core.annotation.Record;
 
 @Record
 public class Header {
-    @Field(format = Pattern.NUMERIC, size = 2)
+    @Field(pattern = Pattern.NUMERIC, size = 2)
     private Teste teste;
-    @Field(start =1, size =3, format = Pattern.NUMERIC)
+    @Field(start =1, size =3, pattern = Pattern.NUMERIC)
     private int sequencia;
-    @identifier
-    @Field(start =4, size =1, format = Pattern.ALPHANUMERIC)
+    @Identifier
+    @Field(start =4, size =1, pattern = Pattern.ALPHANUMERIC)
     private final String id = "H";
-    @Field(start =5, size =26, format = Pattern.ALPHANUMERIC)
+    @Field(start =5, size =26, pattern = Pattern.ALPHANUMERIC)
     private String empresa;
 
 

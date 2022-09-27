@@ -13,7 +13,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Arquivo {
+public abstract class File {
 
     public boolean save(PrintWriter writer) throws Exception {
         /* Busca a classe que implementou Arquivo */
@@ -35,21 +35,21 @@ public abstract class Arquivo {
         writer.close();
         return true;
     }
-    
+
     public boolean read(Path path) throws Exception {
         Reader r = Files.newBufferedReader(path, Charset.forName("ISO-8859-1"));
         BufferedReader br = new BufferedReader(r);
-    	String linha;
-        while ((linha = br.readLine()) != null){
+        String linha;
+        while ((linha = br.readLine()) != null) {
             processLine(linha);
         }
         return true;
     }
 
     public boolean read(InputStream is) throws Exception {
-    	BufferedReader br =  new BufferedReader(new InputStreamReader(is));
-    	String linha;
-        while ((linha = br.readLine()) != null){
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String linha;
+        while ((linha = br.readLine()) != null) {
             processLine(linha);
         }
         return true;
@@ -112,10 +112,10 @@ public abstract class Arquivo {
     }
 
     private String formatField(Field field, Object value) {
-        String result = field.format().format(value, field);
+        String result = field.pattern().format(value, field);
         if (!field.fixed()) {
             result = result.trim();
-        } 
+        }
         if (field.size() > 0) {
             if (result.length() > field.size()) {
                 result = result.substring(0, field.size());

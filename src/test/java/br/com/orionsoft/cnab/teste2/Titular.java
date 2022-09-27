@@ -11,13 +11,13 @@ import java.util.List;
 //@Arquivo(sequenceSize="3", sequenceIndex="0" )
 @Record(delimiter ="|")
 public class Titular {
-    @Field(size =3, format = Pattern.NUMERIC)
+    @Field(size =3, pattern = Pattern.NUMERIC)
     private int sequencia;
-    @Field(size =10, format = Pattern.ALPHANUMERIC, fixed =false)
+    @Field(size =10, pattern = Pattern.ALPHANUMERIC, fixed =false)
     private String id = "TITULAR";
-    @Field(size =11, format = Pattern.NUMERIC)
+    @Field(size =11, pattern = Pattern.NUMERIC)
     private String cpf;
-    @Field(size =8, format = Pattern.NUMERIC)
+    @Field(size =8, pattern = Pattern.NUMERIC)
     private long telefone;
     @SubRecord
     private List<Dependente> dependentes;

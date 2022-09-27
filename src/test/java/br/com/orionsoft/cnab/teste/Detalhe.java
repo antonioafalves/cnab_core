@@ -2,7 +2,7 @@ package br.com.orionsoft.cnab.teste;
 
 import br.com.orionsoft.cnab.core.Pattern;
 import br.com.orionsoft.cnab.core.annotation.Field;
-import br.com.orionsoft.cnab.core.annotation.identifier;
+import br.com.orionsoft.cnab.core.annotation.Identifier;
 import br.com.orionsoft.cnab.core.annotation.Record;
 
 import java.math.BigDecimal;
@@ -10,16 +10,16 @@ import java.time.LocalDate;
 
 @Record
 public class Detalhe {
-    @Field(start =1, size =3, format = Pattern.NUMERIC)
+    @Field(start =1, size =3, pattern = Pattern.NUMERIC)
     private int sequencia;
-    @identifier
-    @Field(start =4, size =1, format = Pattern.ALPHANUMERIC)
+    @Identifier
+    @Field(start =4, size =1, pattern = Pattern.ALPHANUMERIC)
     private String id = "D";
-    @Field(start =5, size =13, format = Pattern.ALPHANUMERIC)
+    @Field(start =5, size =13, pattern = Pattern.ALPHANUMERIC)
     private String nome;
-    @Field(start =18, size =5, format = Pattern.DECIMAL)
+    @Field(start =18, size =5, pattern = Pattern.DECIMAL)
     private BigDecimal valor;
-    @Field(start =23, size =8, format = Pattern.DATE_AAAAMMDD)
+    @Field(start =23, size =8, pattern = Pattern.DATE_AAAAMMDD)
     private LocalDate data;
 
     public LocalDate getData() {

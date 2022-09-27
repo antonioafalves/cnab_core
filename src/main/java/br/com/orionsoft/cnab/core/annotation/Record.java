@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Record {
     String id() default "";
+
     int idIndex() default 0;
+
     String delimiter() default "";
 }

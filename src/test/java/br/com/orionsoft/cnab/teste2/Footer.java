@@ -6,9 +6,9 @@ import br.com.orionsoft.cnab.core.annotation.Record;
 
 @Record(delimiter ="|")
 public class Footer {
-    @Field(size =3, format = Pattern.NUMERIC)
+    @Field(size =3, pattern = Pattern.NUMERIC)
     private int sequencia;
-    @Field(size =10, format = Pattern.ALPHANUMERIC, fixed =false)
+    @Field(size =10, pattern = Pattern.ALPHANUMERIC, fixed =false)
     private String id = "FOOTER";
 
     public String getId() {
