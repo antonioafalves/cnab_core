@@ -7,7 +7,7 @@ import br.com.orionsoft.cnab.core.annotation.SubRecord;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import java.util.List;
 
 public abstract class File {
 
-    public boolean save(PrintWriter writer) throws Exception {
+    public void save(PrintWriter writer) throws Exception {
         /* Busca a classe que implementou Arquivo */
-        Class classe = this.getClass();
+        Class<? extends File> classe = this.getClass();
         /* Itera nos registros (fields) */
         for (java.lang.reflect.Field field : classe.getDeclaredFields()) {
             Method method = classe.getMethod("get".concat(field.getName().substring(0, 1).toUpperCase()).concat(field.getName().substring(1)));
@@ -33,30 +33,27 @@ public abstract class File {
         }
         writer.flush();
         writer.close();
-        return true;
     }
 
-    public boolean read(Path path) throws Exception {
-        Reader r = Files.newBufferedReader(path, Charset.forName("ISO-8859-1"));
+    public void read(Path path) throws Exception {
+        Reader r = Files.newBufferedReader(path, StandardCharsets.ISO_8859_1);
         BufferedReader br = new BufferedReader(r);
         String linha;
         while ((linha = br.readLine()) != null) {
             processLine(linha);
         }
-        return true;
     }
 
-    public boolean read(InputStream is) throws Exception {
+    public void read(InputStream is) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String linha;
         while ((linha = br.readLine()) != null) {
             processLine(linha);
         }
-        return true;
     }
 
     private void processLine(String line) throws Exception {
-        Class classe = this.getClass();
+        Class<? extends File> classe = this.getClass();
         for (java.lang.reflect.Field field : classe.getDeclaredFields()) {
             Method method = classe.getMethod("get".concat(field.getName().substring(0, 1).toUpperCase()).concat(field.getName().substring(1)));
             /* Se não for uma lista, cria uma e adiciona o campo na lista */
@@ -76,8 +73,8 @@ public abstract class File {
         for (Object registro : list) {
             if (registro != null) {
                 StringBuilder linha = new StringBuilder();
-                Class c = registro.getClass();
-                Record anotacaoRecord = (Record) c.getAnnotation(Record.class);
+                Class<?> c = registro.getClass();
+                Record anotacaoRecord = c.getAnnotation(Record.class);
                 if (anotacaoRecord != null) {
                     /* Campos */
                     for (java.lang.reflect.Field f : c.getDeclaredFields()) {
