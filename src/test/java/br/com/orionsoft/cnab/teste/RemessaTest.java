@@ -1,6 +1,6 @@
 package br.com.orionsoft.cnab.teste;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
