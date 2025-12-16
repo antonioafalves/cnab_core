@@ -2,8 +2,6 @@ package br.com.orionsoft.cnab.teste2;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.PrintWriter;
-
 public class RemessaTest {
 
     public RemessaTest() {
@@ -60,6 +58,7 @@ public class RemessaTest {
         footer.setSequencia(++sq);
         remessa.setFooter(footer);
 
-        remessa.save(new PrintWriter("teste.txt"));
+        System.out.println(remessa.get());
+//        remessa.save(new PrintWriter("teste.txt"));
     }
 }

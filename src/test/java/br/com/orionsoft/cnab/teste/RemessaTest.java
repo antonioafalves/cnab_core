@@ -2,7 +2,6 @@ package br.com.orionsoft.cnab.teste;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,6 +20,7 @@ public class RemessaTest {
     public void remessa() throws Exception {
         int sequencia = 0;
         Remessa remessa = new Remessa();
+
         Header header = new Header();
         Detalhe d1 = new Detalhe();
         Detalhe d2 = new Detalhe();
@@ -51,6 +51,7 @@ public class RemessaTest {
         footer.setQuantidade(sequencia);
         remessa.setFooter(footer);
 
-        remessa.save(new PrintWriter("teste.txt"));
+        System.out.println(remessa.get());
+//        remessa.save(new PrintWriter("teste.txt"));
     }
 }
