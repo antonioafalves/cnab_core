@@ -152,7 +152,10 @@ public abstract class File {
                             linha.append(formatField(anotacaoField, valorCampo).concat(anotacaoRecord.delimiter()));
                         }
                     }
-                    linha.append(System.lineSeparator());
+                    /*
+                    Windows line end "\r" "HEX 0D0A"
+                     */
+                    linha.append("\r" + System.lineSeparator());
                     /* SubRegistros */
                     for (java.lang.reflect.Field f : c.getDeclaredFields()) {
                         SubRecord anotacaoCampo = f.getAnnotation(SubRecord.class);

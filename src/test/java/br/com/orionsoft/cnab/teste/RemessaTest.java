@@ -3,8 +3,11 @@ package br.com.orionsoft.cnab.teste;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 
 public class RemessaTest {
@@ -51,7 +54,6 @@ public class RemessaTest {
         footer.setQuantidade(sequencia);
         remessa.setFooter(footer);
 
-        System.out.println(remessa.get());
-//        remessa.save(new PrintWriter("teste.txt"));
+        Files.writeString(Path.of("teste.txt"), remessa.get(), StandardCharsets.UTF_8,  StandardOpenOption.CREATE);
     }
 }
